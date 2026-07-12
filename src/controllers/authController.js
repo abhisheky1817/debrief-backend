@@ -27,3 +27,22 @@ export const signin = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getMe = async (req, res, next) => {
+  try {
+    res.status(200).json({
+      success: true,
+      message: "User fetched successfully",
+      data: {
+        user: {
+          id: req.user.id,
+          name: req.user.name,
+          email: req.user.email,
+          avatar: req.user.avatar,
+        },
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
